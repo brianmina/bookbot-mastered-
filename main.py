@@ -1,10 +1,12 @@
 
 def main():
-    with open("books/frankenstein.txt") as f:
+    with open("/home/brian17/workspace/github.com2025/brianmina2025/bookbot-mastered-/books/frankenstein.txt") as f:
         file_contents = f.read()
         words = file_contents.split()
-        counter = count_words(words)
-        
+        word_counter = count_words(words)
+        print(word_counter)
+        character_counter = count_characters(file_contents)
+        print(character_counter)
 
 
 
@@ -13,12 +15,18 @@ def count_words(words):
 
 
 def count_characters(text):
-    lowered_text = file_contents.lower()
-    return lowered_text
+    lowered_text = text.lower()
+    counter = {}
+    for c in lowered_text:
+        if c not in counter:
+            counter[c] = 1
+        else:
+            counter[c] += 1
+    return counter
 
 #TODO:
-# fix and complete the character function
-# understand the conection between main and the other functions
+# create a report
+
 
 
 
