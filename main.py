@@ -4,9 +4,12 @@ def main():
         file_contents = f.read()
         words = file_contents.split()
         word_counter = count_words(words)
-        print(word_counter)
         character_counter = count_characters(file_contents)
-        print(character_counter)
+        print("--- Begin report of books/frankenstein.txt ---")
+        print(f"{word_counter} words found in the document")
+
+        for character, frequency in character_counter:
+            print(f"The '{character}' character was found {frequency} times")
 
 
 
@@ -18,11 +21,14 @@ def count_characters(text):
     lowered_text = text.lower()
     counter = {}
     for c in lowered_text:
-        if c not in counter:
-            counter[c] = 1
-        else:
-            counter[c] += 1
-    return counter
+        if c.isalpha() == True:
+            if c not in counter:
+                counter[c] = 1
+            else:
+                counter[c] += 1
+    sorted_list = sorted(counter.items(), key=lambda item: item[1], reverse=True)
+    
+    return sorted_list
 
 #TODO:
 # create a report
